@@ -1,0 +1,45 @@
+{% extends 'index.html' %}
+{% block content %}
+{% load static %}
+<div class="content">
+					<form action="{% url 'process_form'%}" method="post" enctype="multipart/form-data">
+						{% csrf_token %}
+						<header>
+							<a href="{% url 'home'%}"><img class="header-back" src="{% static 'images/back.svg' %}"></a>
+							<h1>Reply</h1>
+							<button type="submit" class="header-button">Reply</button>
+						</header>
+						<main>
+							<!-- Sample Tweet 1 -->
+							<div class="tweet">
+								<div class="tweet-icon">
+									<img src="{% static 'images/post-default-icon.svg' %}">
+								</div>
+								<div class="tweet-content">
+									<div class="tweet-name-area">
+										<span class="tweet-name">{{tweet.name}}</span>
+										<span class="tweet-created-at">{{tweet.created_at}}</span>
+									</div>
+									<p>{{tweet.text}}</p>
+								</div>
+							</div>
+							<!-- Post Tweet Form -->
+							<div class="tweet-form">
+								<div class="tweet-form-icon">
+									<img src="{% static 'images/post-default-icon.svg' %}">
+								</div>
+								<div class="tweet-form-content">
+									<p>Replying to this tweet</p>
+
+									<input type="hidden" name="formtype" value="update">
+									<input type="hidden" name="tweetid" value="{{tweet.id}}">
+									<input class="tweet-name" type="text" placeholder="Your post name" name="name">
+
+									<textarea class="tweet-textarea" name="comment" placeholder="Whats happenning?" rows="7" cols="100"></textarea>
+									<input type="file" id="tweet-image" name="tweet-image">
+								</div>
+							</div>
+						</main>
+					</form>
+				</div>
+{% endblock %}

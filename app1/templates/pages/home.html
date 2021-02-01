@@ -1,0 +1,58 @@
+{% extends 'index.html' %}
+{% block content %}
+{% load static %}
+				<div class="content">
+						<header>
+							<img class="header-icon" src="{% static 'images/post-default-icon.svg' %}">
+							<h1>Tweet</h1>
+						</header>
+						<main>
+							<!-- Sample Tweet 1 -->
+
+							{% if not all_tweets %}
+							<h4> No tweets present.</h4>
+							{% else %}
+							{% for tweet in all_tweets %}
+								{% if tweet.parent_tweet_id is None %}
+<!--	for key,tweet in enumerate(alltweet):-->
+<!--		# print(str(tweet[1]))-->
+								<div class="tweet">
+									<div class="tweet-icon">
+										<a href="tweet_detail.py?id="><img src="{% static 'images/post-default-icon.svg' %}"></a>
+									</div>
+									<div class="tweet-content">
+										<div class="tweet-name-area">
+											<span class="tweet-name">{{tweet.name}}</span>
+											<span class="tweet-created-at">{{tweet.created_at}}</span>
+										</div>
+										<p>{{tweet.text}}</p>
+
+		<!--			if 	tweet[4] is not None:-->
+										{% if tweet.image_path is not None%}
+										<a href="{% url 'tweet_detail' tweet.id %}">
+										<img class="tweet-image" src="{% static tweet.image_path %}">
+										</a>
+										{% endif %}
+
+										<div class="tweet-buttons">
+											<a href="{% url 'reply' tweet.id %}">
+												<img class="tweet-reply" src="{% static 'images/comment.svg' %}">
+											</a>
+											<div class="tweet-reply-count">{{tweet.count}}</div>
+												<img class="tweet-like" src="{% static 'images/heart.svg' %}">
+												<div class="tweet-like-count">22</div>
+											</div>
+										</div>
+								</div>
+								{% endif %}
+							{% endfor %}
+							{% endif %}
+
+	</main>
+
+
+		<div class="post-tweet-button">
+			<a href="{% url 'post_twitter'%}"><img src="{% static 'images/post-tweet.svg'%}" ></a>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+{% block content %}
+{% load static %}
+<div class="content">
+				<form action="{% url 'process_form'%}" method="post" enctype="multipart/form-data">
+					{% csrf_token %}
+				<header>
+					<a href="{% url 'home'%}"><img class="header-back" src="{% static 'images/back.svg' %}"></a>
+					<h1>Post Tweet</h1>
+					<button type="submit" class="header-button">Tweet</button>
+				</header>
+				<main>
+
+					<!-- Post Tweet Form -->
+					<div class="tweet-form">
+						<div class="tweet-form-icon">
+							<img src="{% static 'images/post-default-icon.svg' %}">
+						</div>
+						<div class="tweet-form-content">
+							<input type="hidden" name="formtype" value="create">
+
+							<input class="tweet-name" type="text" placeholder="Your post name" required
+       minlength="4" name="name">
+
+							<textarea class="tweet-textarea" name="comment" placeholder="Whats happenning?" rows="7" cols="100"required
+       minlength="5"></textarea>
+							<!--<img class="tweet-form-image" src="images/image.svg">-->
+							<input type="file" id="tweet-image" name="tweet-image">
+						</div>
+					</div>
+
+
+				</main>
+				</form>
+			</div>
+{% endblock %}
