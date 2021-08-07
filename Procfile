@@ -1,0 +1,1 @@
+web: gunicorn twt.wsgi --log-file -
