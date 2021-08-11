@@ -95,12 +95,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'daahi2qv5lmamg',
-        'HOST': '@ec2-54-196-65-186.compute-1.amazonaws.com',
-        'PORT': 5432,
         'USER': 'asuuqpskizvmsf',
-        'PASSWORD': 'cab114a728aa8e25dc244635a7e215fe293bdc8f80ff8b178cc830b85dae9389'
-
-
+        'HOST': 'ec2-54-196-65-186.compute-1.amazonaws.com',
+        'PORT': 5432,
+        'PASSWORD': 'cab114a728aa8e25dc244635a7e215fe293bdc8f80ff8b178cc830b85dae9389',
     }
 }
 # Password validation
